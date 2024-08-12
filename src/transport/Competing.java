@@ -2,8 +2,8 @@ package transport;
 
 public interface Competing {
         void pitStop();
-        double getBestLapTime();
-        double getMaxSpeed();
+        void theBestCircleTime();
+        void maxSpeed();
 
 
 }
