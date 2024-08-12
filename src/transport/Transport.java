@@ -1,14 +1,16 @@
 package transport;
 
-public abstract class Transport {
+public abstract class Transport <T extends Driver>implements Competing {
     private String brand;
     private String model;
     private double engineVolume;
+    private T driver;
 
-    public Transport (String brand, String model, double engineVolume) {
+    public Transport (String brand, String model, double engineVolume, T driver) {
         setBrand(brand);
         setModel(model);
         setEngineVolume(engineVolume);
+        setDriver(driver);
     }
 
     public String getBrand() {
@@ -44,11 +46,24 @@ public abstract class Transport {
             this.engineVolume = engineVolume;
         }
     }
-    public void start (){
-        System.out.println("Начать движение");
+
+    public T getDriver() {
+        return driver;
     }
-    public void stop(){
-        System.out.println("Закончить движение");
+
+    public void setDriver(T driver) {
+        this.driver = driver;
+    }
+
+    public abstract void start ();
+
+    public abstract void stop();
+    public abstract void printType();
+
+    public String toString() {
+        return "Марка: " + brand + ", " +
+                "модель: " + model + ", " +
+                "объем двигателя: " + engineVolume;
     }
 
 }
